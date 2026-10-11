@@ -1,0 +1,270 @@
+/* Usa le variabili del tema Cigno Zen (--text, --link, --border, --card, ...), già definite per chiaro e scuro. */
+
+.cz-list {
+	margin: 0 0 2em;
+}
+
+/* Nomi della lista: nell'header (centrati dal tema) o, senza template dedicato, in testa al contenuto. */
+.cz-list-names {
+	margin: 0.75em 0 0;
+	font-size: var(--fs-ui-compact);
+	opacity: 0.85;
+}
+
+.cz-list-lang abbr {
+	text-decoration: none;
+	font-style: normal;
+	opacity: 0.7;
+}
+
+.cz-list-lang span[lang="sa-Latn"],
+.cz-list-lang span[lang="pi-Latn"],
+.cz-list-lang span[lang="bo-Latn"] {
+	font-style: italic;
+}
+
+.cz-list-lang--zh span[lang="zh"],
+.cz-list-lang--ja span[lang="ja"] {
+	font-family: var(--font-mincho);
+}
+
+.cz-list-sep {
+	opacity: 0.5;
+}
+
+.post-content .cz-list .cz-list-intro {
+	margin: 0 0 0.75em;
+	font-style: italic;
+}
+
+.cz-list-items {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.cz-list-item {
+	display: flex;
+	gap: 1em;
+	align-items: baseline;
+	padding: 0.6em 0;
+}
+
+.cz-list-pos {
+	flex: 0 0 2.5em;
+	text-align: right;
+	font-variant-numeric: tabular-nums;
+	opacity: 0.6;
+}
+
+.cz-list-body {
+	flex: 1;
+	min-width: 0;
+}
+
+.cz-list-label {
+	display: block;
+	font-size: var(--fs-reading);
+}
+
+.cz-list-item--l1 {
+	padding-left: 2.5em;
+}
+
+.cz-list-item--l2 {
+	padding-left: 5em;
+}
+
+.cz-list-item--l3 {
+	padding-left: 7.5em;
+}
+
+.cz-list-item--l1,
+.cz-list-item--l2,
+.cz-list-item--l3 {
+	padding-top: 0.35em;
+	padding-bottom: 0.35em;
+}
+
+.cz-list-heading {
+	margin: 1.5em 0 0.25em;
+	font-variant: small-caps;
+	letter-spacing: 0.04em;
+	opacity: 0.8;
+}
+
+.cz-list-heading:first-child {
+	margin-top: 0;
+}
+
+/* Il tema dà a ".post-content p" rientro, giustificazione e corpo da lettura: qui vanno annullati.
+   Il prefisso .post-content serve a vincere sulla specificità di quella regola. */
+.post-content .cz-list p,
+.post-content .cz-list-extra > p {
+	text-indent: 0;
+	text-align: left;
+	hyphens: manual;
+	padding: 0;
+	font-size: inherit;
+}
+
+.post-content .cz-list .cz-list-item-langs,
+.post-content .cz-list .cz-list-see {
+	margin: 0.2em 0 0;
+	font-size: 0.8em;
+	line-height: 1.5;
+	opacity: 0.75;
+}
+
+.post-content .cz-list .cz-list-or {
+	margin: 1.25em 0;
+	text-align: center;
+	font-style: italic;
+	opacity: 0.7;
+}
+
+.cz-list-or::before,
+.cz-list-or::after {
+	content: "—";
+	margin: 0 0.75em;
+	opacity: 0.5;
+}
+
+.post-content .cz-list-extra > p {
+	margin: 1em 0 0;
+	font-size: var(--fs-ui-compact);
+}
+
+.cz-list-extra {
+	margin-top: 2em;
+	padding-top: 0.5em;
+	border-top: 1px solid var(--border);
+}
+
+.cz-list-meta-label {
+	display: block;
+	margin-bottom: 0.15em;
+	font-size: 0.85em;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	opacity: 0.6;
+}
+
+.cz-list-commentary {
+	margin-top: 1.5em;
+}
+
+/* ===== Indice (archivio /liste/ e pagine per numero) ===== */
+
+.cz-list-index-nav ul {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 0.2em 0;
+	margin: 0 0 3em;
+	padding: 0;
+	list-style: none;
+	font-variant-numeric: tabular-nums;
+}
+
+.cz-list-index-nav li + li::before {
+	content: "·";
+	padding: 0 0.45em;
+	opacity: 0.5;
+}
+
+.cz-list-index-nav a {
+	text-decoration: none;
+}
+
+.cz-list-index-group {
+	margin: 0 0 3em;
+	scroll-margin-top: 2em;
+}
+
+.cz-list-index-head {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	gap: 1em;
+	margin: 0 0 0.75em;
+	padding-bottom: 0.3em;
+	border-bottom: 1px solid var(--border);
+}
+
+.cz-list-index-head h2 {
+	margin: 0;
+}
+
+.cz-list-index-top {
+	font-size: var(--fs-ui-compact);
+	text-decoration: none;
+	opacity: 0.7;
+	white-space: nowrap;
+}
+
+.cz-list-index-nav {
+	scroll-margin-top: 2em;
+}
+
+.cz-list-index-group h2 a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.cz-list-index-items {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.cz-list-index-item {
+	padding: 0.5em 0;
+}
+
+.cz-list-index-title {
+	font-size: var(--fs-reading);
+}
+
+.cz-list-index-names {
+	margin: 0.15em 0 0;
+	font-size: 0.8em;
+	opacity: 0.75;
+}
+
+/* ===== Risultati di ricerca ===== */
+
+.post-content p.cz-list-search-names,
+.post-content p.cz-list-search-item {
+	text-indent: 0;
+	text-align: left;
+	hyphens: manual;
+	padding: 0.15em 0;
+}
+
+.post-content p.cz-list-search-names {
+	font-size: var(--fs-ui-compact);
+	opacity: 0.8;
+}
+
+@media (max-width: 600px) {
+	.cz-list-item {
+		gap: 0.6em;
+	}
+
+	.cz-list-item--l1 {
+		padding-left: 1.2em;
+	}
+
+	.cz-list-item--l2 {
+		padding-left: 2.4em;
+	}
+
+	.cz-list-item--l3 {
+		padding-left: 3.6em;
+	}
+
+	.cz-list-pos {
+		flex-basis: 1.8em;
+	}
+}

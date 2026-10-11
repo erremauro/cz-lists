@@ -1,0 +1,188 @@
+.cz-lists-editor h4 {
+	margin: 0 0 8px;
+}
+
+.cz-lists-section {
+	padding: 12px 0;
+	border-bottom: 1px solid #dcdcde;
+}
+
+.cz-lists-section:last-child {
+	border-bottom: 0;
+}
+
+.cz-lists-langs {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+	gap: 6px 10px;
+	margin: 6px 0;
+}
+
+.cz-lists-lang span,
+.cz-lists-links label > span,
+.cz-lists-intro span {
+	display: block;
+	font-size: 11px;
+	color: #646970;
+}
+
+.cz-lists-lang input,
+.cz-lists-links input {
+	width: 100%;
+}
+
+.cz-lists-lang-zh,
+.cz-lists-lang-ja {
+	font-size: 15px;
+}
+
+.cz-lists-variant {
+	margin-bottom: 16px;
+	padding: 10px 12px;
+	background: #f6f7f7;
+	border: 1px solid #dcdcde;
+	border-radius: 4px;
+}
+
+.cz-lists-variant-head {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+}
+
+.cz-lists-intro {
+	display: block;
+	margin-bottom: 10px;
+}
+
+.cz-lists-items {
+	margin: 0 0 10px;
+	padding: 0;
+	list-style: none;
+}
+
+.cz-lists-item {
+	margin: 0 0 8px;
+	padding: 8px 10px;
+	background: #fff;
+	border: 1px solid #dcdcde;
+	border-radius: 4px;
+}
+
+.cz-lists-item-head {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+}
+
+.cz-lists-handle {
+	cursor: move;
+	color: #8c8f94;
+}
+
+.cz-lists-pos {
+	width: 52px;
+	text-align: center;
+}
+
+.cz-lists-item-it {
+	flex: 1;
+	font-weight: 600;
+}
+
+.cz-lists-links {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+	gap: 6px 10px;
+}
+
+.cz-lists-picker {
+	position: relative;
+}
+
+.cz-lists-chip {
+	display: inline-flex;
+	gap: 6px;
+	align-items: center;
+	padding: 2px 4px 2px 8px;
+	background: #f0f6fc;
+	border: 1px solid #72aee6;
+	border-radius: 12px;
+}
+
+.cz-lists-chip-remove {
+	border: 0;
+	background: none;
+	cursor: pointer;
+	font-size: 16px;
+	line-height: 1;
+	color: #646970;
+}
+
+.cz-lists-results {
+	position: absolute;
+	z-index: 100;
+	left: 0;
+	right: 0;
+	margin: 2px 0 0;
+	max-height: 220px;
+	overflow-y: auto;
+	background: #fff;
+	border: 1px solid #8c8f94;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.cz-lists-results li {
+	margin: 0;
+	padding: 6px 8px;
+	cursor: pointer;
+}
+
+.cz-lists-results li:hover {
+	background: #f0f6fc;
+}
+
+.cz-lists-alias {
+	display: flex;
+	gap: 10px;
+	align-items: flex-end;
+	margin-bottom: 8px;
+}
+
+.cz-lists-alias .cz-lists-langs {
+	flex: 1;
+}
+
+.cz-lists-remove {
+	color: #b32d2e;
+	white-space: nowrap;
+}
+
+.cz-lists-item[data-level="1"] {
+	margin-left: 28px;
+}
+
+.cz-lists-item[data-level="2"] {
+	margin-left: 56px;
+}
+
+.cz-lists-item[data-level="3"] {
+	margin-left: 84px;
+}
+
+/* Le intestazioni hanno solo il testo: niente posizione, lingue né collegamenti. */
+.cz-lists-item.is-heading {
+	background: #f0f0f1;
+}
+
+.cz-lists-item.is-heading .cz-lists-pos,
+.cz-lists-item.is-heading .cz-lists-level,
+.cz-lists-item.is-heading .cz-lists-langs,
+.cz-lists-item.is-heading .cz-lists-links {
+	display: none;
+}
+
+.cz-lists-heading-toggle {
+	white-space: nowrap;
+	font-size: 12px;
+}
