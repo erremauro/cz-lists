@@ -2,7 +2,7 @@
 /**
  * Plugin Name: CZ Lists
  * Description: Liste numeriche del buddhismo (CPT "Liste") con elementi strutturati, varianti e collegamenti ai lemmi.
- * Version: 1.0.0
+ * Version: 1.1.0
  * Author: Roberto Mauro
  * Text Domain: cz-lists
  */
@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'CZ_LISTS_VERSION', '1.0.0' );
+define( 'CZ_LISTS_VERSION', '1.1.0' );
 define( 'CZ_LISTS_PATH', plugin_dir_path( __FILE__ ) );
 define( 'CZ_LISTS_URL', plugin_dir_url( __FILE__ ) );
 

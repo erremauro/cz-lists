@@ -24,6 +24,14 @@ class CZ_Lists_Frontend {
 	 */
 	private static $names_printed = false;
 
+	/**
+	 * true quando il tema ha già stampato il collegamento al lemma nell'header
+	 * (cz_lists_the_lemma_link()): in fondo alla lista non va ripetuto.
+	 *
+	 * @var bool
+	 */
+	private static $lemma_printed = false;
+
 	public function __construct() {
 		// Dopo wpautop (10) e do_shortcode (11), così il markup generato non viene toccato.
 		add_filter( 'the_content', array( $this, 'filter_content' ), 20 );
@@ -74,7 +82,9 @@ class CZ_Lists_Frontend {
 
 		// Informazioni aggiuntive, separate dalla lista da un divisore (solo se ce ne sono).
 		$extra  = $this->render_aliases( $data['aliases'] );
-		$extra .= $this->render_lemma( $data['lemma'] );
+		if ( ! self::$lemma_printed ) {
+			$extra .= $this->render_lemma( $data['lemma'] );
+		}
 		if ( '' !== trim( $content ) ) {
 			$extra .= '<div class="cz-list-commentary">' . $content . '</div>';
 		}
@@ -127,6 +137,40 @@ class CZ_Lists_Frontend {
 
 		self::$names_printed = true;
 		echo self::render_names( $data['names'], 'cz-list-names' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escape in render_names().
+	}
+
+	/**
+	 * Pulsante "Vedi nel Dizionario" verso il lemma collegato alla lista, con lo stile delle
+	 * azioni dell'header degli articoli del tema (.article-actions, .link-pill).
+	 *
+	 * @param int $term_id
+	 */
+	public static function render_lemma_action( $term_id ) {
+		$link = self::lemma_link( $term_id );
+		if ( ! $link ) {
+			return '';
+		}
+
+		return sprintf(
+			'<section class="article-actions cz-list-actions" aria-label="%1$s"><a class="link-pill" href="%2$s">%3$s</a></section>',
+			esc_attr__( 'Azioni lista', 'cz-lists' ),
+			esc_url( $link ),
+			esc_html__( 'Vedi nel Dizionario', 'cz-lists' )
+		);
+	}
+
+	/**
+	 * Stampa il collegamento al lemma della lista (da usare nell'header del template,
+	 * sotto i nomi). Se la lista non ha un lemma non stampa nulla.
+	 *
+	 * @param int $post_id
+	 */
+	public static function the_lemma_link( $post_id = 0 ) {
+		$post_id = $post_id ? $post_id : get_the_ID();
+		$data    = CZ_Lists_Data::get( $post_id );
+
+		self::$lemma_printed = true;
+		echo self::render_lemma_action( $data['lemma'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escape in render_lemma_action().
 	}
 
 	/**
@@ -270,7 +314,7 @@ class CZ_Lists_Frontend {
 	private function render_item( $item, $auto_pos ) {
 		$pos   = '' !== $item['pos'] ? $item['pos'] : (string) $auto_pos;
 		$label = '' !== $item['it'] ? $item['it'] : $item['en'];
-		$link  = $this->lemma_link( $item['lemma'] );
+		$link  = self::lemma_link( $item['lemma'] );
 
 		$html  = '<li class="cz-list-item cz-list-item--l' . (int) $item['level'] . '">';
 		$html .= '<span class="cz-list-pos">' . esc_html( $pos ) . '</span>';
@@ -313,7 +357,7 @@ class CZ_Lists_Frontend {
 	}
 
 	private function render_lemma( $term_id ) {
-		$link = $this->lemma_link( $term_id );
+		$link = self::lemma_link( $term_id );
 		if ( ! $link ) {
 			return '';
 		}
@@ -340,7 +384,7 @@ class CZ_Lists_Frontend {
 		return '<p class="cz-list-referencing"><span class="cz-list-meta-label">' . esc_html__( 'Compare anche in', 'cz-lists' ) . '</span> ' . implode( ', ', $links ) . '</p>';
 	}
 
-	private function lemma_link( $term_id ) {
+	private static function lemma_link( $term_id ) {
 		if ( ! $term_id ) {
 			return '';
 		}
@@ -359,6 +403,17 @@ if ( ! function_exists( 'cz_lists_the_names' ) ) {
 	 */
 	function cz_lists_the_names( $post_id = 0 ) {
 		CZ_Lists_Frontend::the_names( $post_id );
+	}
+}
+
+if ( ! function_exists( 'cz_lists_the_lemma_link' ) ) {
+	/**
+	 * Template tag: pulsante verso il lemma del Dizionario collegato alla lista.
+	 *
+	 * @param int $post_id
+	 */
+	function cz_lists_the_lemma_link( $post_id = 0 ) {
+		CZ_Lists_Frontend::the_lemma_link( $post_id );
 	}
 }
 

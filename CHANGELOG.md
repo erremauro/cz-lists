@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] 2026-10-13
+### Added
+- Template tag `cz_lists_the_lemma_link()`: in the list header, below the title and the original names, a "Vedi nel Dizionario" button (theme classes `.article-actions` / `.link-pill`) links to the dictionary lemma related to the list, when there is one. When the theme prints it, the "Dal Dizionario" line at the bottom of the list is omitted; without it the bottom line stays as before.
+
 ## [1.0.0] 2026-10-11
 ### Added
 - Initial release: custom post type `cz_list` ("Liste", `/liste/`) for Buddhist numerical lists, with the `cz_list_count` taxonomy (`/liste/numero/{n}/`) and term meta `cz_list_number` for numeric ordering. Number terms are named in Italian words up to one hundred.
